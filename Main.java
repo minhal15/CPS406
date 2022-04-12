@@ -69,48 +69,49 @@ public class Main {
 
 				// #################################################################
 				// EXAMPLE
-				else if (action.equalsIgnoreCase("RES")) {
-					try {
-						String flightNum = null;
-						String passengerName = "";
-						String passport = "";
-						String seat = "";
+				// else if (action.equalsIgnoreCase("RES")) {
+				// 	try {
+				// 		String flightNum = null;
+				// 		String passengerName = "";
+				// 		String passport = "";
+				// 		String seat = "";
 
-						if (commandLine.hasNext()) {
-							flightNum = commandLine.next();
-						} else {
-							throw new IllegalArgumentException("Enter flight number");
-						}
-						if (commandLine.hasNext()) {
-							passengerName = commandLine.next();
-						} else {
-							throw new IllegalArgumentException("Enter passenger name");
-						}
-						if (commandLine.hasNext()) {
-							passport = commandLine.next();
-						} else {
-							throw new IllegalArgumentException("Enter passport number");
-						}
-						if (commandLine.hasNext()) {
+				// 		if (commandLine.hasNext()) {
+				// 			flightNum = commandLine.next();
+				// 		} else {
+				// 			throw new IllegalArgumentException("Enter flight number");
+				// 		}
+				// 		if (commandLine.hasNext()) {
+				// 			passengerName = commandLine.next();
+				// 		} else {
+				// 			throw new IllegalArgumentException("Enter passenger name");
+				// 		}
+				// 		if (commandLine.hasNext()) {
+				// 			passport = commandLine.next();
+				// 		} else {
+				// 			throw new IllegalArgumentException("Enter passport number");
+				// 		}
+				// 		if (commandLine.hasNext()) {
 
-							seat = commandLine.next();
+				// 			seat = commandLine.next();
 
-							Reservation res = manager.reserveSeatOnFlight(flightNum, passengerName, passport, seat);
-							// Adds reservation to myReservation Array
-							myReservations.add(res);
-							res.print();
+				// 			Reservation res = manager.reserveSeatOnFlight(flightNum, passengerName, passport, seat);
+				// 			// Adds reservation to myReservation Array
+				// 			myReservations.add(res);
+				// 			res.print();
 
-						} else {
-							throw new IllegalArgumentException("Enter seat number");
-						}
-						// Catches any Exceptions when Creating a reservation/ When not enough info was
-						// entered for input.
-					} catch (Exception e) {
-						System.out.println(e.getMessage());
-					}
+				// 		} else {
+				// 			throw new IllegalArgumentException("Enter seat number");
+				// 		}
+				// 		// Catches any Exceptions when Creating a reservation/ When not enough info was
+				// 		// entered for input.
+				// 	} catch (Exception e) {
+				// 		System.out.println(e.getMessage());
+				// 	}
 
 				// #################################################################	
-				} else if (action.equalsIgnoreCase("CRAFT")) {
+				// } 
+				else if (action.equalsIgnoreCase("CRAFT")) {
 					
 				}
 
@@ -123,14 +124,14 @@ public class Main {
 
 
 
-				
+
 				System.out.print("\n>");
 			}
 
 
 		// Catch IOException if .txt file doesn't exist
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
+		// } catch (IOException e) {
+		// 	System.out.println(e.getMessage());
 		// Catch any other exeption that may occur.
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
