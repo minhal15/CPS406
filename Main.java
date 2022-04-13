@@ -19,6 +19,7 @@
  */
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -94,9 +95,8 @@ public class Main {
 						System.out.println("\nHelp: \n\n");
 					} else {
 						System.out.println("\nAvailable Commands:\n\nlogin\nquit");
-					}
-										
-				}
+					}					
+				} //HELP End
 
 
 				// Quits Program
@@ -145,6 +145,45 @@ public class Main {
 						}
 					}
 				} // LOGIN End
+
+
+				else if (action.equalsIgnoreCase("logout")) {
+					member = false;
+					coach = false;
+					treasurer = false;
+					System.out.println("Logout Successful");
+				}
+
+				// Member Register
+				else if (action.equalsIgnoreCase("REGISTER")) {
+					if (member) {
+						System.out.println("Please Log Out First");
+					} else if (coach) {
+						System.out.println("Please Log Out First");
+					} else if (treasurer) {
+						System.out.println("Please Log Out First");
+					} else {
+						System.out.print("\nWelcome, Please Type In the Following\nUsername: ");
+						String username = scanner.nextLine();
+						// System.out.println(username);
+						System.out.print("Password: ");
+						String password = scanner.nextLine();
+						String newUser[] = {username, password, "member"};
+						List<String> newUserList = new ArrayList<String>();
+						newUserList = Arrays.asList(newUser);
+						users.add(newUserList);
+						try {
+							String filename= "users.txt";
+							FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+							fw.write("\n" + username + "," + password + "," + "member");//appends the string to the file
+							fw.close();
+						} catch(IOException ioe) {
+							System.err.println("IOException: " + ioe.getMessage());
+						}
+					}
+				} // REGISTER End
+
+
 
 
 
