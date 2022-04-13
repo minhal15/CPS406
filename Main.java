@@ -100,7 +100,6 @@ public class Main {
 
 				// Prints list of all available commands
 				else if (action.equalsIgnoreCase("HELP")) {
-
 					if (member) {
 						System.out.println("\nHelp: \n\n");
 					} else if (coach) {
@@ -120,11 +119,7 @@ public class Main {
 					
 				// Login Start
 				else if (action.equalsIgnoreCase("LOGIN")) {
-					if (member) {
-						System.out.println("Already Logged In");
-					} else if (coach) {
-						System.out.println("Already Logged In");
-					} else if (treasurer) {
+					if (member || coach || treasurer) {
 						System.out.println("Already Logged In");
 					} else {
 						System.out.print("\nWelcome\nUsername: ");
@@ -173,11 +168,7 @@ public class Main {
 
 				// Member Register
 				else if (action.equalsIgnoreCase("REGISTER")) {
-					if (member) {
-						System.out.println("Please Log Out First");
-					} else if (coach) {
-						System.out.println("Please Log Out First");
-					} else if (treasurer) {
+					if (member || coach || treasurer) {
 						System.out.println("Please Log Out First");
 					} else {
 						System.out.print("\nWelcome, Please Type In the Following\nUsername: ");
@@ -199,17 +190,25 @@ public class Main {
 					}
 				} // REGISTER End
 
+				// Reading Message
 				else if (action.equalsIgnoreCase("MESSAGES")) {
-					for (List<String> list : messageBoard) {
-						if (list.get(0).equals("public")) {
-							System.out.println("Public Message: " + list.get(1));
-						} else if (list.get(0).equals("private") && list.get(1).equals(UserName)) {
-							System.out.println("Private Message: " + list.get(2));
+					if (member || coach || treasurer) {
+						for (List<String> list : messageBoard) {
+							if (list.get(0).equals("public")) {
+								System.out.println("Public Message: " + list.get(1));
+							} else if (list.get(0).equals("private") && list.get(1).equals(UserName)) {
+								System.out.println("Private Message: " + list.get(2));
+							}
 						}
+					} else {
+						System.out.println("Please Login to View Messages");
 					}
+				} // Messages End
+
+				// Sending Messages
+				else if (action.equalsIgnoreCase("SEND")){
+					
 				}
-
-
 
 
 
