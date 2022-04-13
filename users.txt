@@ -1,0 +1,4 @@
+Member,Password,member
+Coach,Password,coach
+Treasurer,Password,treasurer
+Bosko,Pajkic,member
