@@ -37,7 +37,9 @@ public class Main {
 			boolean member = false;
 			boolean coach = false;
 			boolean treasurer = false;
+			String UserName = "";
 			ArrayList<List<String>> users = new ArrayList();
+			ArrayList<List<String>> messageBoard = new ArrayList();
 			// #################################################################
 
 			// Makes 2D ArrayList of Users
@@ -45,10 +47,21 @@ public class Main {
 			Scanner scan = new Scanner(file);
 			while (scan.hasNextLine()) {
 				String user = scan.nextLine();
-				String userInfo[] = user.split(",");
+				String userInfo[] = user.split("`");
 				List<String> al = new ArrayList<String>();
 				al = Arrays.asList(userInfo);
 				users.add(al);
+			}
+
+			// Makes 2D ArrayList of MessageBoard
+			File file2 = new File("messageboard.txt");
+			Scanner scan2 = new Scanner(file2);
+			while (scan2.hasNextLine()) {
+				String message = scan2.nextLine();
+				String MessageList[] = message.split("`");
+				List<String> al2 = new ArrayList<String>();
+				al2 = Arrays.asList(MessageList);
+				messageBoard.add(al2);
 			}
 
 			// Scanner
@@ -80,7 +93,8 @@ public class Main {
 
 
 
-				// #################################################################
+
+				// ######################################################################
 				// Declare Functions Here
 
 
@@ -94,10 +108,9 @@ public class Main {
 					} else if (treasurer) {
 						System.out.println("\nHelp: \n\n");
 					} else {
-						System.out.println("\nAvailable Commands:\n\nlogin\nquit");
+						System.out.println("\nAvailable Commands:\n\nlogin\nquit\nregister");
 					}					
 				} //HELP End
-
 
 				// Quits Program
 				else if (action.equalsIgnoreCase("quit")) {
@@ -105,10 +118,8 @@ public class Main {
 					return;
 				} //Quit End
 					
-
 				// Login Start
 				else if (action.equalsIgnoreCase("LOGIN")) {
-
 					if (member) {
 						System.out.println("Already Logged In");
 					} else if (coach) {
@@ -117,15 +128,15 @@ public class Main {
 						System.out.println("Already Logged In");
 					} else {
 						System.out.print("\nWelcome\nUsername: ");
-						String username = scanner.nextLine();
-						// System.out.println(username);
+						String username1 = scanner.nextLine();
 						System.out.print("Password: ");
 						String password = scanner.nextLine();
 
 						Boolean found = false;
 						for (List<String> list : users) {
-							if (list.get(0).equals(username) && list.get(1).equals(password)) {
+							if (list.get(0).equals(username1) && list.get(1).equals(password)) {
 								found = true;
+								UserName = list.get(0);
 								if (list.get(2).equals("member")) {
 									member = true;
 								} else if (list.get(2).equals("coach")){
@@ -146,13 +157,19 @@ public class Main {
 					}
 				} // LOGIN End
 
-
+				// Logout
 				else if (action.equalsIgnoreCase("logout")) {
-					member = false;
-					coach = false;
-					treasurer = false;
-					System.out.println("Logout Successful");
-				}
+					if (member || coach || treasurer) {
+						member = false;
+						coach = false;
+						treasurer = false;
+						UserName = "";
+						System.out.println("Logout Successful");
+					} else {
+						System.out.println("Already Logged Out");
+					}
+					
+				} //Logout End
 
 				// Member Register
 				else if (action.equalsIgnoreCase("REGISTER")) {
@@ -164,18 +181,17 @@ public class Main {
 						System.out.println("Please Log Out First");
 					} else {
 						System.out.print("\nWelcome, Please Type In the Following\nUsername: ");
-						String username = scanner.nextLine();
-						// System.out.println(username);
+						String username2 = scanner.nextLine();
 						System.out.print("Password: ");
 						String password = scanner.nextLine();
-						String newUser[] = {username, password, "member"};
+						String newUser[] = {username2, password, "member"};
 						List<String> newUserList = new ArrayList<String>();
 						newUserList = Arrays.asList(newUser);
 						users.add(newUserList);
 						try {
 							String filename= "users.txt";
 							FileWriter fw = new FileWriter(filename,true); //the true will append the new data
-							fw.write("\n" + username + "," + password + "," + "member");//appends the string to the file
+							fw.write("\n" + username2 + "`" + password + "`" + "member");//appends the string to the file
 							fw.close();
 						} catch(IOException ioe) {
 							System.err.println("IOException: " + ioe.getMessage());
@@ -183,11 +199,27 @@ public class Main {
 					}
 				} // REGISTER End
 
+				else if (action.equalsIgnoreCase("MESSAGES")) {
+					for (List<String> list : messageBoard) {
+						if (list.get(0).equals("public")) {
+							System.out.println("Public Message: " + list.get(1));
+						} else if (list.get(0).equals("private") && list.get(1).equals(UserName)) {
+							System.out.println("Private Message: " + list.get(2));
+						}
+					}
+				}
 
 
 
 
-				 // #################################################################
+
+
+
+
+
+
+
+				 // ######################################################################
 
 		
 
@@ -198,14 +230,15 @@ public class Main {
 
 
 				System.out.print("\n>");
-			}
+			} // End of Input Reciever
 
-
+			
 
 		// Catch exeption that may occur.
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 		}
+		
 
 	}
 
