@@ -18,9 +18,12 @@
  * 
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Arrays;
 
 public class Main {
 
@@ -32,11 +35,22 @@ public class Main {
 			// Declare Variables Here
 			boolean member = false;
 			boolean coach = false;
-			boolean tresauer = false;
+			boolean treasurer = false;
+			ArrayList<List<String>> users = new ArrayList();
 			// #################################################################
 
+			// Makes 2D ArrayList of Users
+			File file = new File("users.txt");
+			Scanner scan = new Scanner(file);
+			while (scan.hasNextLine()) {
+				String user = scan.nextLine();
+				String userInfo[] = user.split(",");
+				List<String> al = new ArrayList<String>();
+				al = Arrays.asList(userInfo);
+				users.add(al);
+			}
 
-
+			// Scanner
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("\n>");
 
@@ -76,10 +90,10 @@ public class Main {
 						System.out.println("\nHelp: \n\n");
 					} else if (coach) {
 						System.out.println("\nHelp: \n\n");
-					} else if (tresauer) {
+					} else if (treasurer) {
 						System.out.println("\nHelp: \n\n");
 					} else {
-						System.out.println("\nHelp:\n\nlogin\nquit");
+						System.out.println("\nAvailable Commands:\n\nlogin\nquit");
 					}
 										
 				}
@@ -89,18 +103,17 @@ public class Main {
 				else if (action.equalsIgnoreCase("quit")) {
 					System.out.println("\nClosing Application");
 					return;
-
-				}
+				} //Quit End
 					
 
-
+				// Login Start
 				else if (action.equalsIgnoreCase("LOGIN")) {
 
 					if (member) {
 						System.out.println("Already Logged In");
 					} else if (coach) {
 						System.out.println("Already Logged In");
-					} else if (tresauer) {
+					} else if (treasurer) {
 						System.out.println("Already Logged In");
 					} else {
 						System.out.print("\nWelcome\nUsername: ");
@@ -109,22 +122,29 @@ public class Main {
 						System.out.print("Password: ");
 						String password = scanner.nextLine();
 
-						if (username.equals("Member") && password.equals("Password")) {
+						Boolean found = false;
+						for (List<String> list : users) {
+							if (list.get(0).equals(username) && list.get(1).equals(password)) {
+								found = true;
+								if (list.get(2).equals("member")) {
+									member = true;
+								} else if (list.get(2).equals("coach")){
+									coach = true;
+								} else if (list.get(2).equals("treasurer")){
+									treasurer = true;
+								} else {
+									System.out.println("Type of User Not Found");
+								}
+								break;
+							}
+						}
+						if (found) {
 							System.out.println("Login Successful");
-							member = true;
-						} else if (username.equals("Coach") && password.equals("Password")) {
-							System.out.println("Login Successful");
-							coach = true;
-						} else if (username.equals("Treasurer") && password.equals("Password")) {
-							System.out.println("Login Successful");
-							tresauer = true;
 						} else {
 							System.out.println("Login Failed");
 						}
 					}
-
-					
-				}
+				} // LOGIN End
 
 
 
@@ -142,7 +162,7 @@ public class Main {
 			}
 
 
-		
+
 		// Catch exeption that may occur.
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
