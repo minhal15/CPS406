@@ -30,7 +30,7 @@ public class Main {
 
 			// #################################################################
 			// Declare Variables Here
-			boolean customer = false;
+			boolean member = false;
 			boolean coach = false;
 			boolean tresauer = false;
 			// #################################################################
@@ -72,14 +72,14 @@ public class Main {
 				// Prints list of all available commands
 				else if (action.equalsIgnoreCase("HELP")) {
 
-					if (customer) {
+					if (member) {
 						System.out.println("\nHelp: \n\n");
 					} else if (coach) {
 						System.out.println("\nHelp: \n\n");
 					} else if (tresauer) {
 						System.out.println("\nHelp: \n\n");
 					} else {
-						System.out.println("\nHelp:\n\nlogin");
+						System.out.println("\nHelp:\n\nlogin\nquit");
 					}
 										
 				}
@@ -96,7 +96,7 @@ public class Main {
 
 				else if (action.equalsIgnoreCase("LOGIN")) {
 
-					if (customer) {
+					if (member) {
 						System.out.println("Already Logged In");
 					} else if (coach) {
 						System.out.println("Already Logged In");
@@ -109,9 +109,17 @@ public class Main {
 						System.out.print("Password: ");
 						String password = scanner.nextLine();
 
-						if (username.equals("Customer") && password.equals("Password")) {
+						if (username.equals("Member") && password.equals("Password")) {
 							System.out.println("Login Successful");
-							customer = true;
+							member = true;
+						} else if (username.equals("Coach") && password.equals("Password")) {
+							System.out.println("Login Successful");
+							coach = true;
+						} else if (username.equals("Treasurer") && password.equals("Password")) {
+							System.out.println("Login Successful");
+							tresauer = true;
+						} else {
+							System.out.println("Login Failed");
 						}
 					}
 
