@@ -1,4 +1,3 @@
-
 /**
  * Project MEM
  * 
@@ -29,8 +28,17 @@ public class Main {
 		// Tries to run program, if error occors, prints message
 		try {
 
+			// #################################################################
+			// Declare Variables Here
+			boolean customer = false;
+			boolean coach = false;
+			boolean tresauer = false;
+			// #################################################################
+
+
+
 			Scanner scanner = new Scanner(System.in);
-			System.out.print(">");
+			System.out.print("\n>");
 
 			while (scanner.hasNextLine()) {
 				// Puts input into inputLine
@@ -50,74 +58,71 @@ public class Main {
 					continue;
 				}
 
-				// Quits Program
-				else if (action.equals("Q") || action.equals("QUIT"))
-					return;
+
+
+
+
+
+
+
+				// #################################################################
+				// Declare Functions Here
+
 
 				// Prints list of all available commands
 				else if (action.equalsIgnoreCase("HELP")) {
-					System.out.println("Help: \n\n");
+
+					if (customer) {
+						System.out.println("\nHelp: \n\n");
+					} else if (coach) {
+						System.out.println("\nHelp: \n\n");
+					} else if (tresauer) {
+						System.out.println("\nHelp: \n\n");
+					} else {
+						System.out.println("\nHelp:\n\nlogin");
+					}
+										
 				}
 
 
+				// Quits Program
+				else if (action.equalsIgnoreCase("quit")) {
+					System.out.println("\nClosing Application");
+					return;
+
+				}
+					
 
 
+				else if (action.equalsIgnoreCase("LOGIN")) {
 
+					if (customer) {
+						System.out.println("Already Logged In");
+					} else if (coach) {
+						System.out.println("Already Logged In");
+					} else if (tresauer) {
+						System.out.println("Already Logged In");
+					} else {
+						System.out.print("\nWelcome\nUsername: ");
+						String username = scanner.nextLine();
+						// System.out.println(username);
+						System.out.print("Password: ");
+						String password = scanner.nextLine();
 
+						if (username.equals("Customer") && password.equals("Password")) {
+							System.out.println("Login Successful");
+							customer = true;
+						}
+					}
 
-
-
-				// #################################################################
-				// EXAMPLE
-				// else if (action.equalsIgnoreCase("RES")) {
-				// 	try {
-				// 		String flightNum = null;
-				// 		String passengerName = "";
-				// 		String passport = "";
-				// 		String seat = "";
-
-				// 		if (commandLine.hasNext()) {
-				// 			flightNum = commandLine.next();
-				// 		} else {
-				// 			throw new IllegalArgumentException("Enter flight number");
-				// 		}
-				// 		if (commandLine.hasNext()) {
-				// 			passengerName = commandLine.next();
-				// 		} else {
-				// 			throw new IllegalArgumentException("Enter passenger name");
-				// 		}
-				// 		if (commandLine.hasNext()) {
-				// 			passport = commandLine.next();
-				// 		} else {
-				// 			throw new IllegalArgumentException("Enter passport number");
-				// 		}
-				// 		if (commandLine.hasNext()) {
-
-				// 			seat = commandLine.next();
-
-				// 			Reservation res = manager.reserveSeatOnFlight(flightNum, passengerName, passport, seat);
-				// 			// Adds reservation to myReservation Array
-				// 			myReservations.add(res);
-				// 			res.print();
-
-				// 		} else {
-				// 			throw new IllegalArgumentException("Enter seat number");
-				// 		}
-				// 		// Catches any Exceptions when Creating a reservation/ When not enough info was
-				// 		// entered for input.
-				// 	} catch (Exception e) {
-				// 		System.out.println(e.getMessage());
-				// 	}
-
-				// #################################################################	
-				// } 
-				else if (action.equalsIgnoreCase("CRAFT")) {
 					
 				}
 
-				// #################################################################
 
-				
+
+				 // #################################################################
+
+		
 
 
 
@@ -129,10 +134,8 @@ public class Main {
 			}
 
 
-		// Catch IOException if .txt file doesn't exist
-		// } catch (IOException e) {
-		// 	System.out.println(e.getMessage());
-		// Catch any other exeption that may occur.
+		
+		// Catch exeption that may occur.
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 		}
