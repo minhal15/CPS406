@@ -41,7 +41,7 @@ public class Main {
 			ArrayList<List<String>> users = new ArrayList();
 			ArrayList<List<String>> messageBoard = new ArrayList();
 			String months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-			String currentMonth = "Apr";
+			int currentMonthIndex = 3;
 			ArrayList<List<String>> expensesList = new ArrayList();
 			// #################################################################
 
@@ -70,7 +70,7 @@ public class Main {
 			}
 
 			// Makes 2D ArrayList of expensesList
-			File file3 = new File("messageboard.txt");
+			File file3 = new File("expenses.txt");
 			Scanner scan3 = new Scanner(file3);
 			scan3.nextLine(); // To ignore top rop of files.
 			while (scan3.hasNextLine()) {
@@ -192,7 +192,7 @@ public class Main {
 						String username2 = scanner.nextLine();
 						System.out.print("Password: ");
 						String password = scanner.nextLine();
-						String newUser[] = {username2, password, "member"};
+						String newUser[] = {username2, password, "member", "0"};
 						List<String> newUserList = new ArrayList<String>();
 						newUserList = Arrays.asList(newUser);
 						users.add(newUserList);
@@ -267,8 +267,25 @@ public class Main {
 					}
 				} // SEND End
 
-
-
+				// See Expenses + Priority
+				else if (action.equalsIgnoreCase("EXPENSES")){
+					if (treasurer) {
+						System.out.format("%10s%15s%15s%15s%n", "Priority", "Month", "Type", "Recipient", "Total", "Amount Still Owning");
+						for (List<String> list : expensesList) {
+							for (int i = 0; i < months.length; i++) {
+								if (list.get(0).equals(months[i]) && i < currentMonthIndex) {
+									System.out.format("%10s%15s%15s%15s%n", "High", list.get(0), list.get(1), list.get(2));
+								} else if (list.get(0).equals(months[i]) && i == currentMonthIndex) {
+									System.out.format("%10s%15s%15s%15s%n", "Med", list.get(0), list.get(1), list.get(2));
+								} else if (list.get(0).equals(months[i])) {
+									System.out.format("%15s%15s%15s%15s%n", "Low", list.get(0), list.get(1), list.get(2));
+								}
+							}
+						}
+					} else {
+						System.out.println("Not Allowed");
+					}
+				} // Expenses End	
 
 
 
