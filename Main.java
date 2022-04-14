@@ -270,22 +270,26 @@ public class Main {
 				// See Expenses + Priority
 				else if (action.equalsIgnoreCase("EXPENSES")){
 					if (treasurer) {
-						System.out.format("%10s%15s%15s%15s%n", "Priority", "Month", "Type", "Recipient", "Total", "Amount Still Owning");
+						int total = 0;
+						System.out.println("\n");
+						System.out.format("%10s%10s%10s%20s%10s%10s%n", "Priority", "Month", "Type", "Recipient", "Total", "Owning");
 						for (List<String> list : expensesList) {
 							for (int i = 0; i < months.length; i++) {
 								if (list.get(0).equals(months[i]) && i < currentMonthIndex) {
-									System.out.format("%10s%15s%15s%15s%n", "High", list.get(0), list.get(1), list.get(2));
+									System.out.format("%10s%10s%10s%20s%10s%10s%n", "High", list.get(0), list.get(1), list.get(2), "$"+list.get(3), "$"+list.get(4));
 								} else if (list.get(0).equals(months[i]) && i == currentMonthIndex) {
-									System.out.format("%10s%15s%15s%15s%n", "Med", list.get(0), list.get(1), list.get(2));
+									System.out.format("%10s%10s%10s%20s%10s%10s%n", "Med", list.get(0), list.get(1), list.get(2), "$"+list.get(3), "$"+list.get(4));
 								} else if (list.get(0).equals(months[i])) {
-									System.out.format("%15s%15s%15s%15s%n", "Low", list.get(0), list.get(1), list.get(2));
+									System.out.format("%10s%10s%10s%20s%10s%10s%n", "Low", list.get(0), list.get(1), list.get(2), "$"+list.get(3), "$"+list.get(4));
 								}
 							}
+							total += Integer.valueOf(list.get(4));
 						}
+						System.out.println("\nTotal Still Owing: $" + total);
 					} else {
 						System.out.println("Not Allowed");
 					}
-				} // Expenses End	
+				} // Expenses End		
 
 
 
