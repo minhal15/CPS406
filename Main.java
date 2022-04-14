@@ -45,6 +45,7 @@ public class Main {
 			// Makes 2D ArrayList of Users
 			File file = new File("users.txt");
 			Scanner scan = new Scanner(file);
+			scan.nextLine(); // To ignore top rop of files.
 			while (scan.hasNextLine()) {
 				String user = scan.nextLine();
 				String userInfo[] = user.split("`");
@@ -56,6 +57,7 @@ public class Main {
 			// Makes 2D ArrayList of MessageBoard
 			File file2 = new File("messageboard.txt");
 			Scanner scan2 = new Scanner(file2);
+			scan2.nextLine(); // To ignore top rop of files.
 			while (scan2.hasNextLine()) {
 				String message = scan2.nextLine();
 				String MessageList[] = message.split("`");
