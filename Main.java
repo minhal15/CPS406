@@ -101,11 +101,11 @@ public class Main {
 				// Prints list of all available commands
 				else if (action.equalsIgnoreCase("HELP")) {
 					if (member) {
-						System.out.println("\nHelp: \n\n");
+						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages");
 					} else if (coach) {
-						System.out.println("\nHelp: \n\n");
+						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages\nsend - to send private or public messages");
 					} else if (treasurer) {
-						System.out.println("\nHelp: \n\n");
+						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages");
 					} else {
 						System.out.println("\nAvailable Commands:\n\nlogin\nquit\nregister");
 					}					
