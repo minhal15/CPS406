@@ -40,6 +40,9 @@ public class Main {
 			String UserName = "";
 			ArrayList<List<String>> users = new ArrayList();
 			ArrayList<List<String>> messageBoard = new ArrayList();
+			String months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			String currentMonth = "Apr";
+			ArrayList<List<String>> expensesList = new ArrayList();
 			// #################################################################
 
 			// Makes 2D ArrayList of Users
@@ -65,7 +68,18 @@ public class Main {
 				al2 = Arrays.asList(MessageList);
 				messageBoard.add(al2);
 			}
-			
+
+			// Makes 2D ArrayList of expensesList
+			File file3 = new File("messageboard.txt");
+			Scanner scan3 = new Scanner(file3);
+			scan3.nextLine(); // To ignore top rop of files.
+			while (scan3.hasNextLine()) {
+				String expense = scan3.nextLine();
+				String expenselist[] = expense.split("`");
+				List<String> al3 = new ArrayList<String>();
+				al3 = Arrays.asList(expenselist);
+				expensesList.add(al3);
+			}
 
 			// Scanner
 			Scanner scanner = new Scanner(System.in);
