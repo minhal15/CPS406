@@ -1,4 +1,5 @@
-Member,Password,member
-Coach,Password,coach
-Treasurer,Password,treasurer
-Bosko,Pajkic,member
+// Username // Password // Type of Account // Ammount Owing
+Member`Password`member`0
+Coach`Password`coach`0
+Treasurer`Password`treasurer`0
+Bosko`Pajkic`member`100
