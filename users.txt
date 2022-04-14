@@ -1,5 +1,6 @@
-// Username // Password // Type of Account // Ammount Owing
+// Username // Password // Type of Account // Ammount Of Missed Payments
 Member`Password`member`0
 Coach`Password`coach`0
 Treasurer`Password`treasurer`0
-Bosko`Pajkic`member`100
+Bosko`Pajkic`member`3
+Anmol`Sharma`coach`0
