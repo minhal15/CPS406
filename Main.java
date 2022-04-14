@@ -117,15 +117,34 @@ public class Main {
 
 				// Prints list of all available commands
 				else if (action.equalsIgnoreCase("HELP")) {
-					if (member) {
-						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages");
-					} else if (coach) {
-						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages\nsend - to send private or public messages");
-					} else if (treasurer) {
-						System.out.println("\nAvailable Commands:\n\nlogout\nquit\nmessages - to view messages");
-					} else {
-						System.out.println("\nAvailable Commands:\n\nlogin\nquit\nregister");
-					}					
+
+					// Permissions, Name, Description
+					// Permissions |||| "-" notallowed "t" allowed ||||| location: (Member , Coach , Treasurer , NotLoggedIn)
+					String commandList[][] = {{"tttt" , "Help" , "Shows list of all available commands."},
+											  {"---t" , "Login", "Log into app"},
+											  {"---t" , "Register", "Create an account"},
+											  {"ttt-" , "Logout", "Log out"},
+											  {"tttt" , "Quit", "Quits App"},
+											  {"ttt-" , "Messages", "View Messages"},
+											  {"-tt-" , "Send", "Send private or public messages"},
+											  {"--t-" , "Expenses", "View Expenses by Month and Priority"}};
+
+											  
+					System.out.println("\nAvailable Commands\n");
+					System.out.format("%-20s%-50s%n", "Name", "Description");
+					System.out.println("-----------------------------------------------------------------");
+					for (int i = 0; i < commandList.length; i++) {
+						if (member && commandList[i][0].charAt(0) == 't') {
+							System.out.format("%-20s%-50s%n", commandList[i][1], commandList[i][2]);
+						} else if (coach && commandList[i][0].charAt(1) == 't') {
+							System.out.format("%-20s%-50s%n", commandList[i][1], commandList[i][2]);
+						} else if (treasurer && commandList[i][0].charAt(2) == 't') {
+							System.out.format("%-20s%-50s%n", commandList[i][1], commandList[i][2]);
+						} else if (!member && !coach && !treasurer && commandList[i][0].charAt(3) == 't') {
+							System.out.format("%-20s%-50s%n", commandList[i][1], commandList[i][2]);
+						}
+					}
+										
 				} //HELP End
 
 				// Quits Program
