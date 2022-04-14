@@ -207,7 +207,7 @@ public class Main {
 
 				// Sending Messages
 				else if (action.equalsIgnoreCase("SEND")){
-					if (coach) {
+					if (coach || treasurer) {
 						System.out.print("\"public\" or \"private\": ");
 						String publicOrPrivate = scanner.nextLine();
 						if (publicOrPrivate.equalsIgnoreCase("public")) {
