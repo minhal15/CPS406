@@ -207,8 +207,48 @@ public class Main {
 
 				// Sending Messages
 				else if (action.equalsIgnoreCase("SEND")){
-					
-				}
+					if (coach) {
+						System.out.print("\"public\" or \"private\": ");
+						String publicOrPrivate = scanner.nextLine();
+						if (publicOrPrivate.equalsIgnoreCase("public")) {
+							System.out.print("Message: ");
+							String message = scanner.nextLine();
+							String messageList[] = {publicOrPrivate, message};
+							List<String> newMessageList = new ArrayList<String>();
+							newMessageList = Arrays.asList(messageList);
+							messageBoard.add(newMessageList);
+							try {
+								String filename= "messageboard.txt";
+								FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+								fw.write("\n" + publicOrPrivate + "`" + message);//appends the string to the file
+								fw.close();
+							} catch(IOException ioe) {
+								System.err.println("IOException: " + ioe.getMessage());
+							}
+						} else if (publicOrPrivate.equalsIgnoreCase("private")) {
+							System.out.print("Recipient: ");
+							String recipient = scanner.nextLine();
+							System.out.print("Message: ");
+							String message = scanner.nextLine();
+							String messageList[] = {publicOrPrivate, recipient, message};
+							List<String> newMessageList = new ArrayList<String>();
+							newMessageList = Arrays.asList(messageList);
+							messageBoard.add(newMessageList);
+							try {
+								String filename= "messageboard.txt";
+								FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+								fw.write("\n" + publicOrPrivate + "`" + recipient + "`" + message);//appends the string to the file
+								fw.close();
+							} catch(IOException ioe) {
+								System.err.println("IOException: " + ioe.getMessage());
+							}
+						} else {
+							System.out.println("Invalid Argument");
+						}
+					} else {
+						System.out.println("Not Allowed");
+					}
+				} // SEND End
 
 
 
@@ -225,7 +265,9 @@ public class Main {
 
 
 
-
+				else {
+					System.out.println("Invalid Command");
+				}
 
 
 				System.out.print("\n>");
