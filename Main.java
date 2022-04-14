@@ -75,10 +75,9 @@ public class Main {
 					System.out.print("\n>");
 					continue;
 				}
-
-				// The command line is a scanner that scans the inputLine string
 				Scanner commandLine = new Scanner(inputLine);
-				// The action string is the command to be performed (e.g. help, login etc)
+
+				// action is the first word that the user inputed
 				String action = commandLine.next();
 
 				if (action == null || action.equals("")) {
@@ -94,7 +93,8 @@ public class Main {
 
 
 
-				// ######################################################################
+				// #####################################################################################
+				// #####################################################################################
 				// Declare Functions Here
 
 
@@ -258,29 +258,21 @@ public class Main {
 
 
 
-				 // ######################################################################
+				 // #####################################################################################
+				 // #####################################################################################
 
-		
-
-
-
-
+				 
 				else {
 					System.out.println("Invalid Command");
 				}
 
-
 				System.out.print("\n>");
-			} // End of Input Reciever
+			} // End of While Loop
 
-			
 
 		// Catch exeption that may occur.
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 		}
-		
-
 	}
-
 }
