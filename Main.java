@@ -65,6 +65,7 @@ public class Main {
 				al2 = Arrays.asList(MessageList);
 				messageBoard.add(al2);
 			}
+			
 
 			// Scanner
 			Scanner scanner = new Scanner(System.in);
