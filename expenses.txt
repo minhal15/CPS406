@@ -1,11 +1,11 @@
 // Month // Type of Expense // To Who // Total Amount // Ammount Still Owing
-Jan`Rent`Building Owner`1400`0
+Jan`Rent`Landlord`1400`0
 Jan`Wage`Anmol`300`0
-Feb`Rent`Building Owner`1400`0
+Feb`Rent`Landlord`1400`0
 Feb`Wage`Anmol`200`0
-Mar`Rent`Building Owner`1400`300
+Mar`Rent`Landlord`1400`300
 Mar`Wage`Anmol`500`300
-Apr`Rent`Building Owner`1400`1400
+Apr`Rent`Landlord`1400`1400
 Apr`Wage`Anmol`600`600
-May`Rent`Building Owner`1400`1400
+May`Rent`Landlord`1400`1400
 May`Wage`Anmol`0`0
