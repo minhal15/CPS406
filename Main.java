@@ -119,7 +119,7 @@ public class Main {
 				else if (action.equalsIgnoreCase("HELP")) {
 
 					// Permissions, Name, Description
-					// Permissions |||| "-" notallowed "t" allowed ||||| location: (Member , Coach , Treasurer , NotLoggedIn)
+					// Permissions |||| "t" = allowed ||||| location: (Member , Coach , Treasurer , NotLoggedIn)
 					String commandList[][] = {{"tttt" , "Help" , "Shows list of all available commands."},
 											  {"---t" , "Login", "Log into app"},
 											  {"---t" , "Register", "Create an account"},
