@@ -1,6 +1,7 @@
-// Username // Password // Type of Account // Ammount Of Missed Payments
-Member`Password`member`0
-Coach`Password`coach`0
-Treasurer`Password`treasurer`0
-Bosko`Pajkic`member`3
-Anmol`Sharma`coach`0
+// Username // Password // Type of Account // No of practices attended // No of practices paid // No of practices unpaid
+Member`Password`member`0`0`0
+Coach`Password`coach`0`0`0
+Treasurer`Password`treasurer`0`0`0
+Bosko`Pajkic`member`10`10`0
+minhal`minhal`member`8`4`4
+anmol`anmol`member`6`5`1
